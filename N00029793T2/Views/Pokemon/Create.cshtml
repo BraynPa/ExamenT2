@@ -1,0 +1,30 @@
+﻿@{ var pokemon = (Pokemon)Model; }
+
+<h1>Crear un nuevo Pokemon</h1>
+
+
+<form action="/Pokemon/create" enctype="multipart/form-data" method="post">
+    <input type="file" class="form-control" name="Img" />
+
+    <label>Nombre</label>
+    <input class="form-control" name="Nombre" />
+    @Html.ValidationMessage("Nombre")
+    @Html.ValidationMessage("Nombre2")
+
+
+    <label>Tipo</label>
+    <div class="from-group">
+        <select class="form-control" name="TypeId">
+            <option value="">-- Selecciona una opción --</option>
+            @foreach (var item in ViewBag.Types)
+            {
+<option value="@item.Id">@item.Nombre</option>
+}
+        </select>
+    </div>
+   
+
+
+    <button>Guardar</button>
+
+</form>

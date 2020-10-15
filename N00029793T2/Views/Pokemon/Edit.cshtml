@@ -1,0 +1,37 @@
+﻿@{ 
+    var pokemon = (Pokemon)Model;
+}
+   
+
+
+<h1>Editar Pokemon</h1>
+
+
+<form action="/account/edit" method="post">
+
+    <input type="hidden" name="Id" value="@pokemon.Id" />
+    <input type="hidden" name="RutaImgPo" value="@pokemon.RutaImgPo" />
+    @Html.ValidationMessage("RutaImgPo")
+
+
+<div class="form-group">
+    <label>Nombre</label>
+    <input class="form-control" name="Nombre" value="@pokemon.Nombre" />
+    @Html.ValidationMessage("Nombre")
+    @Html.ValidationMessage("Name2")
+</div>
+
+    <div class="from-group">
+        <label>Tipo</label>
+        <select class="form-control" name="Type">
+            @foreach (var item in ViewBag.Types)
+            {
+<option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+    </div>
+    @Html.ValidationMessage("TypeId")
+
+    <button class="btn btn-primary">Guardar</button>
+
+</form>
